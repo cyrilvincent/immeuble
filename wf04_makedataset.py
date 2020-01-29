@@ -3,6 +3,24 @@ import json
 import shutil
 
 feature = "RevetementVetuste"
+feature = "TraceHumidite"
+feature = "ChateauMoulureOrnement"
+feature = "FissureFacade"
+feature = "CablePendantEnSurface"
+feature = "BatimentVide"
+feature = "VoletVetutste"
+feature = "PanneauAVendre"
+feature = "BardageBoisAcierFacade"
+feature = "JardinExterieurNonEntretenu"
+feature = "MauvaisEtatToiture"
+feature = "MultipleGraffitis"
+feature = "BatimentMitoyenVetuste"
+feature = "BatimentInnocupe"
+feature = "CommerceEnRdcVideFerme"
+feature = "MauvaisEtatGoutiere"
+feature = "PorteFenetreMurees"
+# feature = "PresenceActiviteSuivantes"
+
 path = "../images"
 
 print(f"Loading data/{feature}/db_{feature}.json")

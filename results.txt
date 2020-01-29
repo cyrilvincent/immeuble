@@ -1,0 +1,26 @@
+feature = "RevetementVetuste" 7897 64 VGG67 OK70
+feature = "TraceHumidite" 8690 61 VGG63 OK65 Crop+Chercher dans la composante verte OK70Cost+
+feature = "ChateauMoulureOrnement" 5613 59 VGG62 OK65 Yolo Moulures, elle seront bien détectées mais pas le reste OK70Cost+++
+feature = "FissureFacade" 65 (Overfit71) VGG58 OK70 Crop largeur
+feature = "CablePendantEnSurface" 65 (Overfit71) VGG64 OK70
+feature = "BatimentVide" 1945 60 (Overfit71) VGG61 En partie VoletFerme OK70Cost+++
+feature = "VoletVetutste" 4078 65 (Overfit74) VGG63 MobileNet64 (Overfit89) VGGRetrain52 OK70 #Yolo OK75Cost+++
+feature = "PanneauAVendre" 1350 58 #ImageAI Panneau OK75Cost+++
+feature = "BardageBoisAcierFacade" 409 61
+feature = "JardinExterieurNonEntretenu" 1019 56 #Crop
+feature = "MauvaisEtatToiture" 597 VGG58 #ImageNet TileRoof + crop
+feature = "MultipleGraffitis" 1465 60 #ImageAI Graffitis OK75Cost+++
+feature = "BatimentMitoyenVetuste" 844 VGG75 OK75
+feature = "BatimentInnocupe" 280 53 Lowest #ImageAI Volets fermés OK75Cost+++
+feature = "CommerceEnRdcVideFerme" 2729 VGG70 Crop OK75 Yolo VoletsFermés OK75Cost+++
+feature = "MauvaisEtatGoutiere" 367 64 OK65 #Crop
+feature = "PorteFenetreMurees" 637 61 (Overfit74) OK70 #Yolo VoletsFermés OK75Cost+++
+feature = "PresenceActiviteSuivantes" 2429
+
+https://github.com/OlafenwaMoses/ImageAI/blob/master/imageai/Detection/README.md
+A faire tourner en venv Tensorflow 1.4
+Tensorflow 2.0 coming soon
+Faire une custom detection des fenetres vitrines et volets
+https://github.com/OlafenwaMoses/ImageAI/blob/master/imageai/Prediction/CUSTOMTRAINING.md
+Puis mettre en place
+https://github.com/OlafenwaMoses/ImageAI/blob/master/imageai/Detection/Custom/CUSTOMDETECTION.md
