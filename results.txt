@@ -21,6 +21,8 @@ https://github.com/OlafenwaMoses/ImageAI/blob/master/imageai/Detection/README.md
 A faire tourner en venv Tensorflow 1.4
 Tensorflow 2.0 coming soon
 Faire une custom detection des fenetres vitrines et volets
-https://github.com/OlafenwaMoses/ImageAI/blob/master/imageai/Prediction/CUSTOMTRAINING.md
+https://github.com/OlafenwaMoses/ImageAI/blob/master/imageai/Detection/Custom/CUSTOMDETECTIONTRAINING.md
 Puis mettre en place
 https://github.com/OlafenwaMoses/ImageAI/blob/master/imageai/Detection/Custom/CUSTOMDETECTION.md
+TF2 impl
+https://github.com/zzh8829/yolov3-tf2
