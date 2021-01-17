@@ -7,26 +7,26 @@ import random
 # os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 feature = "RevetementVetuste"
-feature = "TraceHumidite"
-feature = "ChateauMoulureOrnement"
-feature = "FissureFacade"
-feature = "CablePendantEnSurface"
-feature = "BatimentVide"
-feature = "VoletVetutste"
-# feature = "PanneauAVendre"
-# feature = "BardageBoisAcierFacade"
-# feature = "JardinExterieurNonEntretenu"
-feature = "MauvaisEtatToiture"
-# feature = "MultipleGraffitis"
-feature = "BatimentMitoyenVetuste"
-# feature = "BatimentInnocupe"
-feature = "CommerceEnRdcVideFerme"
+# feature = "TraceHumidite"
+# feature = "ChateauMoulureOrnement"
+# feature = "FissureFacade"
+# feature = "CablePendantEnSurface"
+# feature = "BatimentVide"
+# feature = "VoletVetutste"
+# # feature = "PanneauAVendre"
+# # feature = "BardageBoisAcierFacade"
+# # feature = "JardinExterieurNonEntretenu"
+# feature = "MauvaisEtatToiture"
+# # feature = "MultipleGraffitis"
+# feature = "BatimentMitoyenVetuste"
+# # feature = "BatimentInnocupe"
+# feature = "CommerceEnRdcVideFerme"
 # feature = "MauvaisEtatGoutiere"
 # feature = "PorteFenetreMurees"
 # feature = "PresenceActiviteSuivantes"
 
-# seed = 1
-# tensorflow.random.set_seed(seed)
+seed = 1
+tensorflow.random.set_seed(seed)
 # np.random.seed(seed)
 # random.seed(seed)
 
@@ -39,10 +39,9 @@ def train():
 
     x = model.output
     x = keras.layers.Flatten()(x)
+    x = keras.layers.Dense(8000, activation="relu")(x)
     x = keras.layers.Dropout(0.5)(x)
-    x = keras.layers.Dense(4096, activation="relu")(x)
-    x = keras.layers.Dropout(0.5)(x)
-    x = keras.layers.Dense(1024, activation="relu")(x)
+    x = keras.layers.Dense(2000, activation="relu")(x)
     x = keras.layers.Dropout(0.5)(x)
     x = keras.layers.Dense(1, activation="sigmoid")(x)
 
@@ -56,13 +55,13 @@ def train():
 
 
     trainset = keras.preprocessing.image.ImageDataGenerator(rescale=1. / 255, validation_split=0.2,
-        # shear_range=0.2,
-        # zoom_range=0.2,
+        # shear_range=0.1,
+        # zoom_range=0.1,
         # width_shift_range=0.2,
-        # horizontal_flip=True
-                                                            )
+        horizontal_flip=True
+                                                      )
 
-    batchSize = 16
+    batchSize = 1
 
     trainGenerator = trainset.flow_from_directory(
             f'data/{feature}',
@@ -78,13 +77,17 @@ def train():
             subset = 'validation',
             batch_size=batchSize)
 
+    model = keras.models.load_model(f'data/{feature}/vgg16model-66.h5')
+    model.optimizer = keras.optimizers.SGD(1e-3,nesterov=True)
+
     model.fit(
             trainGenerator,
-            epochs=5,
+            epochs=10,
             validation_data=validationGenerator,
     )
 
-    model.save(f'data/{feature}/vgg16model.h5')
+    score = model.evaluate(validationGenerator)
+    model.save(f'data/{feature}/vgg16model-{score[1]*100:.0f}.h5')
     # RevetementVetuste
     # batch=16
     # 5 * 26s 86ms/step - loss: 0.6482 - accuracy: 0.6644 - val_loss: 0.6246 - val_accuracy: 0.6831

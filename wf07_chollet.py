@@ -1,32 +1,30 @@
 import tensorflow.keras as keras
 import tensorflow
-import numpy as np
-import random
 
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 feature = "RevetementVetuste"
-feature = "TraceHumidite"
-feature = "ChateauMoulureOrnement"
-feature = "FissureFacade"
-feature = "CablePendantEnSurface"
-feature = "BatimentVide"
-feature = "VoletVetutste"
-feature = "PanneauAVendre"
-feature = "BardageBoisAcierFacade"
-feature = "JardinExterieurNonEntretenu"
-# feature = "MauvaisEtatToiture"
-feature = "MultipleGraffitis"
-# feature = "BatimentMitoyenVetuste"
-feature = "BatimentInnocupe"
-# feature = "CommerceEnRdcVideFerme"
-feature = "MauvaisEtatGoutiere"
-feature = "PorteFenetreMurees"
+# feature = "TraceHumidite"
+# feature = "ChateauMoulureOrnement"
+# feature = "FissureFacade"
+# feature = "CablePendantEnSurface"
+# feature = "BatimentVide"
+# feature = "VoletVetutste"
+# feature = "PanneauAVendre"
+# feature = "BardageBoisAcierFacade"
+# feature = "JardinExterieurNonEntretenu"
+# # feature = "MauvaisEtatToiture"
+# feature = "MultipleGraffitis"
+# # feature = "BatimentMitoyenVetuste"
+# feature = "BatimentInnocupe"
+# # feature = "CommerceEnRdcVideFerme"
+# feature = "MauvaisEtatGoutiere"
+# feature = "PorteFenetreMurees"
 # feature = "PresenceActiviteSuivantes"
 
-# seed = 1
-# tensorflow.random.set_seed(seed)
+seed = 1
+tensorflow.random.set_seed(seed)
 # np.random.seed(seed)
 # random.seed(seed)
 
@@ -49,11 +47,10 @@ def Chollet():
 
         #Dense
         model.add(keras.layers.Flatten())
-        model.add(keras.layers.Dropout(0.2))
         # 4096
-        model.add(keras.layers.Dense(256))
+        model.add(keras.layers.Dense(500))
         model.add(keras.layers.Activation('relu'))
-        model.add(keras.layers.Dropout(0.2))
+        model.add(keras.layers.Dropout(0.4))
         model.add(keras.layers.Dense(1))
         model.add(keras.layers.Activation('sigmoid'))
         return model
@@ -69,7 +66,7 @@ def train():
         # shear_range=0.2,
         # zoom_range=0.2,
         # width_shift_range=0.2,
-        # horizontal_flip=True
+        horizontal_flip=True
                                                             )
 
     batchSize = 16
@@ -88,13 +85,17 @@ def train():
             subset = 'validation',
             batch_size=batchSize)
 
+    # model = keras.models.load_model(f'data/{feature}/cholletmodel-63.h5')
+    # model.optimizer = keras.optimizers.SGD(1e-3,nesterov=True)
+
     model.fit(
             trainGenerator,
-            epochs=5,
+            epochs=10,
             validation_data=validationGenerator,
     )
 
-    model.save(f'data/{feature}/cholletmodel.h5')
+    score = model.evaluate(validationGenerator)
+    model.save(f'data/{feature}/cholletmodel-{score[1]*100:.0f}.h5')
 
     # RevetementVetuste
     # 0.64
