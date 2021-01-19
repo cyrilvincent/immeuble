@@ -15,9 +15,9 @@ fissuresDb = [row for row in db if row["FissureFacade"] == "O" or row["FissureFa
 positives = [row for row in fissuresDb if row["FissureFacade"] == "O"]
 print(f"Fissures: {len(fissuresDb)} items with {len(positives)} positives")
 
-voletDb = [row for row in db if row["VoletVetutste"] == "O" or row["VoletVetutste"] == "N"]
-positives = [row for row in voletDb  if row["VoletVetutste"] == "O"]
-print(f"VoletVetutste: {len(voletDb)} items with {len(positives)} positives")
+voletDb = [row for row in db if row["VoletVetuste"] == "O" or row["VoletVetuste"] == "N"]
+positives = [row for row in voletDb  if row["VoletVetuste"] == "O"]
+print(f"VoletVetuste: {len(voletDb)} items with {len(positives)} positives")
 
 humiditeDb = [row for row in db if row["TraceHumidite"] == "O" or row["TraceHumidite"] == "N"]
 positives = [row for row in humiditeDb if row["TraceHumidite"] == "O"]

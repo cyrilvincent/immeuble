@@ -10,7 +10,7 @@ feature = "RevetementVetuste"
 # feature = "FissureFacade"
 # feature = "CablePendantEnSurface"
 # feature = "BatimentVide"
-# feature = "VoletVetutste"
+# feature = "VoletVetuste"
 # feature = "PanneauAVendre"
 # feature = "BardageBoisAcierFacade"
 # feature = "JardinExterieurNonEntretenu"
@@ -118,7 +118,7 @@ def train():
     # BatimentVide
     # 13s 105ms/step - loss: 0.6908 - accuracy: 0.5530 - val_loss: 0.7049 - val_accuracy: 0.5166
 
-    # VoletVetutste
+    # VoletVetuste
     # 16s 63ms/step - loss: 0.6740 - accuracy: 0.6010 - val_loss: 0.6138 - val_accuracy: 0.6621
 
     # PanneauAVendre

@@ -1,7 +1,5 @@
 feature = "RevetementVetuste" 7897 64 VGG67 OK70
 feature = "TraceHumidite" 8690 61 VGG63 OK65 Crop+Chercher dans la composante verte OK70Cost+
-	Crop partie basse image
-	Convert to HSV Green=[100-140] https://stackoverflow.com/questions/52179821/python-3-i-am-trying-to-find-find-all-green-pixels-in-an-image-by-traversing-al
 feature = "ChateauMoulureOrnement" 5613 59 VGG62 OK65 Yolo Moulures, elle seront bien détectées mais pas le reste OK70Cost+++
 feature = "FissureFacade" 65 (Overfit71) VGG58 OK70 Crop largeur
 feature = "CablePendantEnSurface" 65 (Overfit71) VGG64 OK70
